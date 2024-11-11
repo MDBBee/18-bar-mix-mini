@@ -20,7 +20,7 @@ const Wrapper = styled.nav`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
   .nav-link {
     color: var(--grey-900);
@@ -28,23 +28,25 @@ const Wrapper = styled.nav`
     transition: var(--transition);
     letter-spacing: 2px;
   }
-  .nav-link:hover {
-    color: var(--primary-500);
-  }
+
+  .nav-link:hover,
   .active {
     color: var(--primary-500);
   }
-  @media (min-width: 768px) {
+
+  /*  active */
+  @media screen and (min-width: 768px) {
     .nav-center {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      margin-top: 0;
     }
+
     .nav-links {
       flex-direction: row;
       margin-top: 0;
     }
   }
 `;
-
 export default Wrapper;
