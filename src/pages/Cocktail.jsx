@@ -7,9 +7,9 @@ import { useQuery } from '@tanstack/react-query';
 const singleCocktailUrl =
   'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
-const cocktailPageQueryObj = (id) => {
+const singleCocktailQueryObj = (id) => {
   return {
-    queryKey: ['single', id],
+    queryKey: ['singleCocktail', id],
     queryFn: async () => {
       const response = await Axios(`${singleCocktailUrl}${id}`);
       return response.data;
@@ -21,14 +21,14 @@ export const loader =
   (queryClient) =>
   async ({ params }) => {
     const { id } = params;
-    await queryClient.ensureQueryData(cocktailPageQueryObj(id));
+    await queryClient.ensureQueryData(singleCocktailQueryObj(id));
 
     return { id };
   };
 
 function Cocktail() {
   const { id } = useLoaderData();
-  const { data, isLoading } = useQuery(cocktailPageQueryObj(id));
+  const { data, isLoading } = useQuery(singleCocktailQueryObj(id));
 
   if (isLoading) return <h3>Loading..... Single!!</h3>;
   if (!data)
