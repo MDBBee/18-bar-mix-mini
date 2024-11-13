@@ -4,9 +4,8 @@ import img from '../assets/not-found.svg';
 
 function Error() {
   const error = useRouteError();
-  console.log(error);
 
-  if (error.status) {
+  if (error.status === 404) {
     return (
       <Wrapper>
         <div>
@@ -22,6 +21,6 @@ function Error() {
     );
   }
 
-  return <h1>Error</h1>;
+  return <h1>ERROR!!!!</h1>;
 }
 export default Error;

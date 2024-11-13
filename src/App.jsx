@@ -32,15 +32,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
-        loader: landingLoader,
+        loader: landingLoader(queryClient),
         errorElement: <SinglePageError />,
-        // action: searchFormAction,
       },
       { path: 'about', element: <About /> },
       {
         path: 'cocktail/:id',
         element: <Cocktail />,
-        loader: singleCocktailLoader,
+        loader: singleCocktailLoader(queryClient),
         errorElement: <SinglePageError />,
       },
       { path: 'newsletter', element: <Newsletter />, action: newsletterAction },

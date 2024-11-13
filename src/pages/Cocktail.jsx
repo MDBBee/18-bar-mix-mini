@@ -1,20 +1,36 @@
-import { useLoaderData } from 'react-router-dom';
+import { Navigate, useLoaderData } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/CocktailPage';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 const singleCocktailUrl =
   'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
-export const loader = async ({ params }) => {
-  const { id } = params;
-
-  const response = await Axios(`${singleCocktailUrl}${id}`);
-  return { data: response.data, id };
+const cocktailPageQueryObj = (id) => {
+  return {
+    queryKey: ['single', id],
+    queryFn: async () => {
+      const response = await Axios(`${singleCocktailUrl}${id}`);
+      return response.data;
+    },
+  };
 };
 
+export const loader =
+  (queryClient) =>
+  async ({ params }) => {
+    const { id } = params;
+    await queryClient.ensureQueryData(cocktailPageQueryObj(id));
+
+    return { id };
+  };
+
 function Cocktail() {
-  const { id, data } = useLoaderData();
+  const { id } = useLoaderData();
+  const { data, isLoading } = useQuery(cocktailPageQueryObj(id));
+
+  if (isLoading) return <h3>Loading..... Single!!</h3>;
   if (!data)
     return (
       <header
@@ -33,9 +49,10 @@ function Cocktail() {
         <h2
           style={{
             marginTop: '1rem',
+            lineHeight: '2',
           }}
         >
-          &uarr; Something went wrong....
+          &uarr; Something went wrong.... Navigate to homePage
         </h2>
       </header>
     );
@@ -60,7 +77,7 @@ function Cocktail() {
     <Wrapper>
       <header>
         <Link to="/" className="btn">
-          back home
+          &larr; back home
         </Link>
         <h3>{name}</h3>
       </header>

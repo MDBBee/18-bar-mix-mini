@@ -3,8 +3,9 @@ import Wrapper from '../assets/wrappers/SearchForm';
 
 const SearchForm = ({ searchWord }) => {
   const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
+  const isSubmitting = navigation.state === 'loading';
   const defaultValue = searchWord === 'a' ? '' : searchWord;
+
   return (
     <Wrapper>
       <Form className="form">
