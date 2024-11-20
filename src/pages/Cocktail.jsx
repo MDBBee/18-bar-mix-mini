@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
 const singleCocktailUrl =
-  'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
+  'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?if=';
 
 const singleCocktailQueryObj = (id) => {
   return {
@@ -28,9 +28,8 @@ export const loader =
 
 function Cocktail() {
   const { id } = useLoaderData();
-  const { data, isLoading } = useQuery(singleCocktailQueryObj(id));
+  const { data } = useQuery(singleCocktailQueryObj(id));
 
-  if (isLoading) return <h3>Loading..... Single!!</h3>;
   if (!data)
     return (
       <header

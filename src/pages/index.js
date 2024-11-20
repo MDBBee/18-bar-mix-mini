@@ -4,8 +4,17 @@
 // import HomeLayout from './HomeLayout';
 // import Landing from './Landing';
 // import Newsletter from './Newsletter';
+// import SinglePageError from './SinglePageError';
 
-// export default { Error, About, Cocktail, HomeLayout, Landing, Newsletter };
+// export {
+//   Error,
+//   About,
+//   Cocktail,
+//   HomeLayout,
+//   Landing,
+//   Newsletter,
+//   SinglePageError,
+// };
 
 export { default as Error } from './Error';
 export { default as About } from './About';

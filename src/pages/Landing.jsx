@@ -31,6 +31,13 @@ export const loader =
 function Landing() {
   const { searchWord } = useLoaderData();
   const { data: drinks } = useQuery(searchCocktailsQuery(searchWord));
+  // const { data: drinks } = useQuery({
+  //   queryKey: ['search', searchWord],
+  //   queryFn: async () => {
+  //     const response = await Axios(`${cocktailSearchUrl}${searchWord}`);
+  //     return response.data.drinks;
+  //   },
+  // });
 
   return (
     <>

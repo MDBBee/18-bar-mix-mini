@@ -52,7 +52,7 @@ function Newsletter() {
           required
         />
       </div>
-      {/* name */}
+      {/* email */}
       <div className="form-row">
         <label htmlFor="email" className="form-label">
           email
