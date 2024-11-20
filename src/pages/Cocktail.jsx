@@ -5,13 +5,15 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
 const singleCocktailUrl =
-  'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?if=';
+  'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
 const singleCocktailQueryObj = (id) => {
   return {
     queryKey: ['singleCocktail', id],
     queryFn: async () => {
       const response = await Axios(`${singleCocktailUrl}${id}`);
+      console.log(response);
+
       return response.data;
     },
   };

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.nav`
-  background: var(--white);
+  background: var(--nav-textColor);
+  box-shadow: var(--shadow-3);
   .nav-center {
     width: var(--view-width);
     max-width: var(--max-width);
@@ -19,7 +20,7 @@ const Wrapper = styled.nav`
   .nav-links {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
     margin-top: 0.5rem;
   }
   .nav-link {
@@ -34,6 +35,16 @@ const Wrapper = styled.nav`
     color: var(--primary-500);
   }
 
+  .btn-theme {
+    align-self: flex-start;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+
   /*  active */
   @media screen and (min-width: 768px) {
     .nav-center {
@@ -46,6 +57,11 @@ const Wrapper = styled.nav`
     .nav-links {
       flex-direction: row;
       margin-top: 0;
+      align-items: center;
+    }
+
+    .btn-theme {
+      align-self: center;
     }
   }
 `;
