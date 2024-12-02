@@ -9,15 +9,29 @@ function CocktailList({ drinks }) {
   }
 
   const formattedDrinks = drinks.map((drink) => {
-    const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } = drink;
+    const {
+      idDrink: id,
+      strDrink: name,
+      strDrinkThumb: image,
+      strAlcoholic: info,
+      strGlass: glass,
+    } = drink;
+    // const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } = drink;
 
     return {
-      id: idDrink,
-      name: strDrink,
-      image: strDrinkThumb,
-      info: strAlcoholic,
-      glass: strGlass,
+      id,
+      name,
+      image,
+      info,
+      glass,
     };
+    // return {
+    //   id: idDrink,
+    //   name: strDrink,
+    //   image: strDrinkThumb,
+    //   info: strAlcoholic,
+    //   glass: strGlass,
+    // };
   });
   return (
     <Wrapper>

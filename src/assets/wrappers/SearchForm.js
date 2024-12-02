@@ -10,6 +10,10 @@ const Wrapper = styled.div`
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+  .form-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
   .btn {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
